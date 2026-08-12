@@ -37,9 +37,9 @@ The infrastructure spans across multiple Availability Zones (Multi-AZ) to elimin
     sudo systemctl start httpd
     sudo systemctl enable httpd
 
-    TOKEN=\$(curl -s -X PUT "http://169.254.169" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
-    INSTANCE_ID=(curl -s -H "X-aws-ec2-metadata-token: TOKEN" http://169.254.169)
-    AZ=(curl -s -H "X-aws-ec2-metadata-token: TOKEN" http://169.254.169)
+    TOKEN=\$(curl -s -X PUT "http://169.254.169.254" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+    INSTANCE_ID=(curl -s -H "X-aws-ec2-metadata-token: TOKEN" http://169.254.169.254)
+    AZ=(curl -s -H "X-aws-ec2-metadata-token: TOKEN" http://169.254.169.254)
 
     echo "<h1>Welcome to My Scalable Web App</h1>" > /var/www/html/index.html
     echo "<p>Served from Instance ID: <b>\(INSTANCE_ID</b> in Availability Zone: <b>\)AZ</b></p>" >> /var/www/html/index.html
